@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+
+    <display-name>ITalker</display-name>
+
+    <servlet>
+        <servlet-name>ITalkerApiServlet</servlet-name>
+        <!--容器-->
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <!--映射的包名，用于搜索处理类-->
+            <param-value>com.wuyou.web.italker.push.service</param-value>
+        </init-param>
+        <init-param>
+            <param-name>javax.ws.rs.Application</param-name>
+            <param-value>com.wuyou.web.italker.push.Application</param-value>
+        </init-param>
+
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!--映射-->
+    <servlet-mapping>
+        <servlet-name>ITalkerApiServlet</servlet-name>
+        <!--访问路径-->
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
+</web-app>

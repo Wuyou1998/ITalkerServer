@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- 数据库链接驱动 -->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <!--链接地址用户名密码 -->
+        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/DB_I_T_PUSH_TEST?serverTimezone=CST&amp;useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">123456</property>
+
+        <!--<property name="connection.url">jdbc:mysql://qiujuer.net:6968/DB_I_T_PUSH?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false</property>-->
+
+
+        <!-- JDBC 链接池大小 -->
+        <property name="connection.pool_size">5</property>
+
+        <!-- SQL 方言 -->
+        <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+
+        <!-- Hibernate session 上下文为线程级别 -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- 配置C3P0缓存链接池  -->
+        <property name="cache.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
+        <!--在连接池中可用数据库连接的最小数目-->
+        <property name="c3p0.min_size">6</property>
+        <!--在连接池中所有数据库连接的最大数目-->
+        <property name="c3p0.max_size">50</property>
+        <!--设定数据库连接的超时时间-->
+        <!--<property name="c3p0.time_out">1800</property>-->
+        <property name="c3p0.timeout">100</property>
+        <!--可以被缓存的PreparedStatement的最大数目-->
+        <property name="c3p0.max_statement">50</property>
+        <!-- 当连接池里面的连接用完的时候，C3P0一下获取的新的连接数 -->
+        <property name="c3p0.acquire_increment">1</property>
+        <!-- 连接对象因该多长时间被自动校验的时间段，以秒为单位-->
+        <property name="c3p0.idle_test_period">100</property> <!-- seconds -->
+        <!--最多可以创建Statements对象的个数. . 就是可以执行SQL语句的对象的个数-->
+        <property name="c3p0.max_statements">0</property>
+
+        <!-- SQL语句输出 -->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+
+        <!-- 自动更新数据库的级别 -->
+        <property name="hbm2ddl.auto">update</property>
+        <!--
+        create：表示启动的时候先drop，再create
+        create-drop: 也表示创建，只不过再系统关闭前执行一下drop
+        update: 这个操作启动的时候会去检查schema是否一致，如果不一致会做scheme更新
+        validate: 启动时验证现有schema与你配置的hibernate是否一致，如果不一致就抛出异常，并不做更新
+        -->
+
+
+<!--        <mapping package="net.qiujuer.web.italker.push.bean.db"-->
+<!--                 class="net.qiujuer.web.italker.push.bean.db.User"/>-->
+<!--        <mapping package="net.qiujuer.web.italker.push.bean.db"-->
+<!--                 class="net.qiujuer.web.italker.push.bean.db.UserFollow"/>-->
+
+<!--        <mapping package="net.qiujuer.web.italker.push.bean.db"-->
+<!--                 class="net.qiujuer.web.italker.push.bean.db.Group"/>-->
+<!--        <mapping package="net.qiujuer.web.italker.push.bean.db"-->
+<!--                 class="net.qiujuer.web.italker.push.bean.db.GroupMember"/>-->
+
+<!--        <mapping package="net.qiujuer.web.italker.push.bean.db"-->
+<!--                 class="net.qiujuer.web.italker.push.bean.db.Message"/>-->
+
+<!--        <mapping package="net.qiujuer.web.italker.push.bean.db"-->
+<!--                 class="net.qiujuer.web.italker.push.bean.db.PushHistory"/>-->
+<!--        <mapping package="net.qiujuer.web.italker.push.bean.db"-->
+<!--                 class="net.qiujuer.web.italker.push.bean.db.Apply"/>-->
+
+    </session-factory>
+</hibernate-configuration>
