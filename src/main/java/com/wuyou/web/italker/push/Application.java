@@ -1,7 +1,7 @@
 package com.wuyou.web.italker.push;
 
 import com.wuyou.web.italker.push.Service.AccountService;
-import org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.JacksonJsonProvider;
+import com.wuyou.web.italker.push.provider.GsonProvider;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import java.util.logging.Logger;
@@ -18,7 +18,7 @@ public class Application extends ResourceConfig {
         packages(AccountService.class.getPackage().getName());
 
         //注册Json和Logger
-        register(JacksonJsonProvider.class);
+        register(GsonProvider.class);
         register(Logger.class);
     }
 }
