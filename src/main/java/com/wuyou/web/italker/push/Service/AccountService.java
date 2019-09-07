@@ -1,6 +1,6 @@
 package com.wuyou.web.italker.push.Service;
 
-import com.wuyou.web.italker.push.bean.User;
+import com.wuyou.web.italker.push.bean.db.User;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -26,8 +26,7 @@ public class AccountService {
     @Produces(MediaType.APPLICATION_JSON)
     public User post() {
         User user = new User();
-        user.setName("wuyou");
-        user.setSex(1);
+
         return user;
     }
 }

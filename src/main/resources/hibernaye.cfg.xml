@@ -8,7 +8,7 @@
         <!-- 数据库链接驱动 -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <!--链接地址用户名密码 -->
-        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/DB_I_T_PUSH_TEST?serverTimezone=CST&amp;useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false</property>
+        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/i_talker?serverTimezone=CST&amp;useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false</property>
         <property name="connection.username">root</property>
         <property name="connection.password">123456</property>
 
@@ -56,23 +56,23 @@
         -->
 
 
-<!--        <mapping package="net.qiujuer.web.italker.push.bean.db"-->
-<!--                 class="net.qiujuer.web.italker.push.bean.db.User"/>-->
-<!--        <mapping package="net.qiujuer.web.italker.push.bean.db"-->
-<!--                 class="net.qiujuer.web.italker.push.bean.db.UserFollow"/>-->
+        <mapping package="com.wuyou.web.italker.push.bean.db"
+                 class="com.wuyou.web.italker.push.bean.db.User"/>
+        <mapping package="com.wuyou.web.italker.push.bean.db"
+                 class="com.wuyou.web.italker.push.bean.db.UserFollow"/>
 
-<!--        <mapping package="net.qiujuer.web.italker.push.bean.db"-->
-<!--                 class="net.qiujuer.web.italker.push.bean.db.Group"/>-->
-<!--        <mapping package="net.qiujuer.web.italker.push.bean.db"-->
-<!--                 class="net.qiujuer.web.italker.push.bean.db.GroupMember"/>-->
+        <mapping package="com.wuyou.web.italker.push.bean.db"
+                 class="com.wuyou.web.italker.push.bean.db.Group"/>
+        <mapping package="com.wuyou.web.italker.push.bean.db"
+                 class="com.wuyou.web.italker.push.bean.db.GroupMember"/>
 
-<!--        <mapping package="net.qiujuer.web.italker.push.bean.db"-->
-<!--                 class="net.qiujuer.web.italker.push.bean.db.Message"/>-->
+        <mapping package="com.wuyou.web.italker.push.bean.db"
+                 class="com.wuyou.web.italker.push.bean.db.Message"/>
 
-<!--        <mapping package="net.qiujuer.web.italker.push.bean.db"-->
-<!--                 class="net.qiujuer.web.italker.push.bean.db.PushHistory"/>-->
-<!--        <mapping package="net.qiujuer.web.italker.push.bean.db"-->
-<!--                 class="net.qiujuer.web.italker.push.bean.db.Apply"/>-->
+        <mapping package="com.wuyou.web.italker.push.bean.db"
+                 class="com.wuyou.web.italker.push.bean.db.PushHistory"/>
+        <mapping package="com.wuyou.web.italker.push.bean.db"
+                 class="com.wuyou.web.italker.push.bean.db.Apply"/>
 
     </session-factory>
 </hibernate-configuration>

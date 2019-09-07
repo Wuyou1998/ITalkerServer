@@ -1,12 +1,15 @@
 package com.wuyou.web.italker.push.bean.db;
 
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.*;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 名称: ITalkerServer.com.wuyou.web.italker.push.bean.db.User
@@ -59,12 +62,21 @@ public class User {
     @Column
     private String pushId;
 
+    //我所有创建的群，对应字段为 Group.ownerId
+    @JoinColumn(name = "ownerId")
+    //懒加载集合，尽可能的不加载具体的数据，访问groups.size()仅仅只查询数量，不加载具体的group信息
+    //只有遍历集合时才加载具体的数据
+    @LazyCollection(LazyCollectionOption.EXTRA)
+    //懒加载，加载用户信息时不加载这个集合
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Group> groups = new HashSet<>();
+
     //定义为创建时间戳，在创建时就已经写入
     @CreationTimestamp
     @Column(nullable = false)
     private LocalDateTime createAt = LocalDateTime.now();
 
-    //定义为更新时间戳，在创建时就已经写入
+    //定义为更新时间戳
     @UpdateTimestamp
     @Column(nullable = false)
     private LocalDateTime updateAt = LocalDateTime.now();
@@ -167,5 +179,13 @@ public class User {
 
     public void setLastReceiveAt(LocalDateTime lastReceiveAt) {
         this.lastReceiveAt = lastReceiveAt;
+    }
+
+    public Set<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(Set<Group> groups) {
+        this.groups = groups;
     }
 }

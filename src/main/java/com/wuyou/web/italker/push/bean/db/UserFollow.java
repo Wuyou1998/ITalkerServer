@@ -68,7 +68,7 @@ public class UserFollow {
     @Column(nullable = false)
     private LocalDateTime createAt = LocalDateTime.now();
 
-    //定义为更新时间戳，在创建时就已经写入
+    //定义为更新时间戳
     @UpdateTimestamp
     @Column(nullable = false)
     private LocalDateTime updateAt = LocalDateTime.now();

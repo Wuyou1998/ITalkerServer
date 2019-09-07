@@ -41,16 +41,41 @@ public class Message {
     @Column(nullable = false)
     private int type;
 
+    //发送者
+    //多个消息对应一个发送者
+    @JoinColumn(name = "senderId")
+    @ManyToOne(optional = false)
     private User sender;
 
+    //这个字段只是为了对应sender的数据库字段senderId，不允许手动更新或插入
+    @Column(nullable = false, updatable = false, insertable = false)
+    private String senderId;
+
+
+    //接收者，可以为空
+    //多个消息对应一个接收者
+    @JoinColumn(name = "receiverId")
+    @ManyToOne
     private User receiver;
+
+    //这个字段只是为了对应receiver的数据库字段receiverId，不允许手动更新或插入
+    @Column(updatable = false, insertable = false)
+    private String receiverId;
+
+    //一个群可以接收多条信息
+    @JoinColumn(name = "groupId")
+    @ManyToOne
+    private Group group;
+
+    @Column(updatable = false, insertable = false)
+    private String groupId;
 
     //定义为创建时间戳，在创建时就已经写入
     @CreationTimestamp
     @Column(nullable = false)
     private LocalDateTime createAt = LocalDateTime.now();
 
-    //定义为更新时间戳，在创建时就已经写入
+    //定义为更新时间戳
     @UpdateTimestamp
     @Column(nullable = false)
     private LocalDateTime updateAt = LocalDateTime.now();
@@ -117,5 +142,37 @@ public class Message {
 
     public void setUpdateAt(LocalDateTime updateAt) {
         this.updateAt = updateAt;
+    }
+
+    public String getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
+    }
+
+    public String getReceiverId() {
+        return receiverId;
+    }
+
+    public void setReceiverId(String receiverId) {
+        this.receiverId = receiverId;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 }
