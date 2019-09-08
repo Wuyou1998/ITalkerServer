@@ -1,6 +1,7 @@
 package com.wuyou.web.italker.push;
 
 import com.wuyou.web.italker.push.Service.AccountService;
+import com.wuyou.web.italker.push.provider.AuthRequestFilter;
 import com.wuyou.web.italker.push.provider.GsonProvider;
 import org.glassfish.jersey.server.ResourceConfig;
 
@@ -16,7 +17,8 @@ public class Application extends ResourceConfig {
     public Application() {
         //注册逻辑处理的包名
         packages(AccountService.class.getPackage().getName());
-
+        //注册全局请求拦截器
+        register(AuthRequestFilter.class);
         //注册Json和Logger
         register(GsonProvider.class);
         register(Logger.class);

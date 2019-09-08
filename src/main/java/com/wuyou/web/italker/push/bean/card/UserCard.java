@@ -1,6 +1,7 @@
 package com.wuyou.web.italker.push.bean.card;
 
 import com.google.gson.annotations.Expose;
+import com.wuyou.web.italker.push.bean.db.User;
 
 import java.time.LocalDateTime;
 
@@ -35,6 +36,24 @@ public class UserCard {
     //我与这个User的关系状态，我是否关注了这个人
     @Expose
     private boolean isFollow;
+
+    public UserCard(final User user) {
+        this(user, false);
+    }
+
+    public UserCard(final User user, boolean isFollow) {
+        this.id = user.getId();
+        this.name = user.getName();
+        this.phone = user.getPhone();
+        this.avatar = user.getAvatar();
+        this.description = user.getDescription();
+        this.sex = user.getSex();
+        this.modifyAt = user.getUpdateAt();
+        this.isFollow = isFollow;
+
+        //TODO user.getFollowers().size()
+        // 懒加载会报错，因为没有Session
+    }
 
     public String getId() {
         return id;
