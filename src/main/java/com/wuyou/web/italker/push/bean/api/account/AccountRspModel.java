@@ -13,7 +13,7 @@ import com.wuyou.web.italker.push.bean.db.User;
 public class AccountRspModel {
     //用户基本信息
     @Expose
-    private UserCard userCard;
+    private UserCard user;
     //当前登录的账号
     @Expose
     private String account;
@@ -32,15 +32,15 @@ public class AccountRspModel {
         this.account = user.getPhone();
         this.token = user.getToken();
         this.isBind = isBind;
-        this.userCard = new UserCard(user);
+        this.user = new UserCard(user);
     }
 
-    public UserCard getUserCard() {
-        return userCard;
+    public UserCard getUser() {
+        return user;
     }
 
-    public void setUserCard(UserCard userCard) {
-        this.userCard = userCard;
+    public void setUser(UserCard user) {
+        this.user = user;
     }
 
     public String getAccount() {

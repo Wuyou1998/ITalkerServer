@@ -102,7 +102,6 @@ public class GsonProvider<T> implements MessageBodyReader<T>, MessageBodyWriter<
         //TypeAdapter<T> adapter = gson.getAdapter((TypeToken<T>) TypeToken.get(genericType));
         try (JsonWriter jsonWriter = gson.newJsonWriter(new OutputStreamWriter(entityStream, Charset.forName("UTF-8")))) {
             gson.toJson(t, genericType, jsonWriter);
-            jsonWriter.close();
         }
     }
 }
