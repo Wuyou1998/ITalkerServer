@@ -1,11 +1,13 @@
 package com.wuyou.web.italker.push.Service;
 
 import com.google.common.base.Strings;
+import com.wuyou.web.italker.push.bean.api.base.PushModel;
 import com.wuyou.web.italker.push.bean.api.base.ResponseModel;
 import com.wuyou.web.italker.push.bean.api.user.UpdateInfoModel;
 import com.wuyou.web.italker.push.bean.card.UserCard;
 import com.wuyou.web.italker.push.bean.db.User;
 import com.wuyou.web.italker.push.factory.UserFactory;
+import com.wuyou.web.italker.push.utils.PushDispatcher;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -122,15 +124,15 @@ public class UserService extends BaseService {
         //把查询到的user封装为userCard,判断这些人中是否有我已经关注的人
         //如果有，则返回的关注状态中应该已经设置好状态
 
-        //拿出我的练习人
+        //拿出我的联系人
         List<User> contacts = UserFactory.contacts(self);
         //User->UserCards
         List<UserCard> userCards = searchUsers.stream()
                 .map(user -> {
                     //判断这个人是不是我，或者是否在我的联系人中
-                    boolean isFollow = user.getId().equalsIgnoreCase(self.getId())
+                    boolean isFollow = user.getId().equalsIgnoreCase(self.getId()) ||
                             //进行联系人的任意匹配，匹配其中的Id字段
-                            || contacts.stream().allMatch(contactUser -> contactUser.getId().equalsIgnoreCase(user.getId()));
+                            contacts.stream().anyMatch(contactUser -> contactUser.getId().equalsIgnoreCase(user.getId()));
                     return new UserCard(user, isFollow);
                 }).collect(Collectors.toList());
 
