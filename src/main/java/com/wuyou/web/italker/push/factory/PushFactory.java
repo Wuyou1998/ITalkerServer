@@ -42,7 +42,7 @@ public class PushFactory {
             PushHistory history = new PushHistory();
             //普通消息类型
             history.setEntityType(PushModel.ENTITY_TYPE_MESSAGE);
-            history.setEntity(receiver.getId());
+            history.setEntity(entity);
             history.setReceiver(receiver);
             //接收者当前的设备推送id
             history.setReceiverPushId(receiver.getPushId());
