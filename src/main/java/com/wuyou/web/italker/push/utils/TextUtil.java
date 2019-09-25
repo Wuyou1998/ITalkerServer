@@ -7,10 +7,6 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.Base64;
 
-/**
- * @author qiujuer Email:qiujuer@live.cn
- * @version 1.0.0
- */
 public class TextUtil {
     /**
      * 计算一个字符串的MD5信息

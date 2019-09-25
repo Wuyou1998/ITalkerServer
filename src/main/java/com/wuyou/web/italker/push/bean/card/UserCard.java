@@ -52,6 +52,7 @@ public class UserCard {
         this.modifyAt = user.getUpdateAt();
         this.isFollow = isFollow;
 
+        //得到关注人和粉丝的数量
         // user.getFollowers().size()
         // 懒加载会报错，因为没有Session
         Hib.queryOnly(session -> {

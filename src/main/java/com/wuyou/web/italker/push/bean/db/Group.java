@@ -1,5 +1,6 @@
 package com.wuyou.web.italker.push.bean.db;
 
+import com.wuyou.web.italker.push.bean.api.group.GroupCreateModel;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -60,6 +61,16 @@ public class Group {
     @UpdateTimestamp
     @Column(nullable = false)
     private LocalDateTime updateAt = LocalDateTime.now();
+
+    public Group() {
+    }
+
+    public Group(User owner, GroupCreateModel model) {
+        this.owner = owner;
+        this.name = model.getName();
+        this.description = model.getDescription();
+        this.picture = model.getPicture();
+    }
 
     public String getId() {
         return id;

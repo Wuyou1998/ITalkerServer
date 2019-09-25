@@ -1,13 +1,12 @@
 package com.wuyou.web.italker.push.Service;
 
 import com.google.common.base.Strings;
-import com.wuyou.web.italker.push.bean.api.base.PushModel;
 import com.wuyou.web.italker.push.bean.api.base.ResponseModel;
 import com.wuyou.web.italker.push.bean.api.user.UpdateInfoModel;
 import com.wuyou.web.italker.push.bean.card.UserCard;
 import com.wuyou.web.italker.push.bean.db.User;
+import com.wuyou.web.italker.push.factory.PushFactory;
 import com.wuyou.web.italker.push.factory.UserFactory;
-import com.wuyou.web.italker.push.utils.PushDispatcher;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -79,7 +78,9 @@ public class UserService extends BaseService {
             //关注失败，返回服务器异常
             return ResponseModel.buildServiceError();
         }
-        //TODO 通知我关注的人我关注了他
+        //通知我关注的人我关注了他
+        //给他发送一个我的信息过去
+        PushFactory.pushFollow(followUser, new UserCard(self));
         //返回关注人信息
         return ResponseModel.buildOk(new UserCard(followUser, true));
     }
