@@ -303,7 +303,7 @@ public class GroupService extends BaseService {
     }
 
     /**
-     * 更改成员信息，请求的人要么是管理员，要么是成员笨人
+     * 更改成员信息，请求的人要么是管理员，要么是成员本人
      *
      * @param memberId 成员id，可以查询对应的的群，和人
      * @param model    修改的model

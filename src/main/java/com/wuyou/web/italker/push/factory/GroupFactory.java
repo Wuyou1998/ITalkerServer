@@ -39,7 +39,7 @@ public class GroupFactory {
                 .uniqueResult());
     }
 
-    //查询一个群的左右成员
+    //查询一个群的所有成员
     public static Set<GroupMember> getMembers(Group group) {
 
         return Hib.query(session -> {
@@ -72,7 +72,7 @@ public class GroupFactory {
             //保存，还没有提交到数据库
             session.save(ownerMember);
             for (User user : userList) {
-                GroupMember member = new GroupMember(creator, group);
+                GroupMember member = new GroupMember(user, group);
                 //保存，还没有提交到数据库
                 session.save(member);
             }
